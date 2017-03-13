@@ -1,0 +1,86 @@
+#loginImg {
+    margin-top: 3%;
+    margin-left: 25%;
+}
+#login {
+    background-image:url(../images/loginPage/inputLogin.png);
+    background-repeat: no-repeat;
+    width: 580px;
+    height: 70px;
+    margin-top: 1%;
+    margin-left: 25%;
+}
+
+#inputLogin {
+    background-color: transparent;
+    border: 0;
+    font: 22px Calibri;
+    color: white;
+    margin-top: 20px;
+    margin-left: 200px;
+}
+
+#password {
+    background-image:url(../images/loginPage/inputPassword.png);
+    background-repeat: no-repeat;
+    width: 580px;
+    height: 70px;
+    margin-top: 1%;
+    margin-left: 25%;
+}
+
+#inputPassword {
+    background-color: transparent;
+    border: 0;
+    font: 22px Calibri;
+    color: white;
+    margin-top: 20px;
+    margin-left: 200px;
+}
+
+#error {
+    margin-top: 1%;
+    margin-left: 25%;
+}
+
+#signIn {
+    width: 580px;
+    height: 72px;
+    margin-top: 1%;
+    margin-left: 25%;
+}
+
+a.signMeIn {
+    background: url(../images/loginPage/signIn.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 222px;
+    height: 72px;
+    float: left;
+}
+a.signMeIn:hover {
+    background: url(../images/loginPage/signInClicked.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 222px;
+    height: 72px;
+    float: left;
+}
+
+a.newAccount {
+    background: url(../images/loginPage/newAccount.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 278px;
+    height: 72px;
+    margin-left: 302px;
+}
+a.newAccount:hover {
+    background: url(../images/loginPage/newAccountClicked.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 278px;
+    height: 72px;
+    margin-left: 302px;
+}
+
