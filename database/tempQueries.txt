@@ -1,0 +1,18 @@
+/*USE chat;
+CREATE TABLE registered_users (id int, login VARCHAR(25), password VARCHAR(25), email TINYTEXT, sex VARCHAR(10), age TINYINT, comment TEXT );*/
+
+/**
+ INSERT INTO registered_users(id, login, password, sex, age, comment, email, friendsLogins)VALUES('login', 'password', 'sex', 'age', 'comment', 'email', 'friendsLogins');
+
+ SELECT login, password, sex, age, comment, email, friendsLogins FROM registered_users WHERE login IN('login') ;
+ //SELECT *
+
+ SELECT * FROM registered_users ORDER BY id ASC;
+ */
+
+
+            // String sql;
+             //sql = "INSERT INTO registered_users(id, login, password, sex, age, comment, email, friendsLogins)VALUES('" + user.getLogin() + "', '" + user.getPassword() + "', '" + user.getSex() + "', '" + user.getAge() + "', '" + user.getComment() + "', '" + user.getEmail() + "', '" + user.getFriendsLogins() + "');";
+             //statement.executeQuery(sql);
+             //statement.close();
+    //private static final String USER_EXISTS = "SELECT EXISTS (SELECT * FROM registered_users WHERE login = ?);";

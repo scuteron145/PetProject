@@ -13,6 +13,7 @@
           <element id="library" level="project" name="Maven: javax.websocket:javax.websocket-api:1.1" />
           <element id="library" level="project" name="Maven: javax.mail:mail:1.4" />
           <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: org.xerial:sqlite-jdbc:3.7.2" />
         </element>
       </element>
       <element id="directory" name="META-INF">

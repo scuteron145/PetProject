@@ -5,7 +5,7 @@
 </head>
 <link rel="stylesheet" type="text/css" href="../../resources/stylies/index.css" />
 <link rel="stylesheet" type="text/css" href="../../resources/stylies/login.css" />
-<script src="../../resources/scripts/chatScript.js"></script>
+<script src="../../resources/scripts/scripts.js"></script>
 <body>
 <div id="main">
     <jsp:include page="header.jsp"/>
