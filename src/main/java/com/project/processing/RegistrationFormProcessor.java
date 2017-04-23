@@ -27,9 +27,28 @@ public class RegistrationFormProcessor {
     }
 
     public User creatUser(HttpServletRequest request){
-        String login = AuthorizationUtils.instanse.readLogin(request);
-        String password = AuthorizationUtils.instanse.readPassword(request);
-        String email = AuthorizationUtils.instanse.readEmail(request);
+        if( AuthorizationUtils.instanse.LoginPasswordEmailAreEmpty(request) ){
+            AuthorizationUtils.instanse.setErrorEmptyField(request);
+            return null;
+        }
+        String login = null;
+        if(AuthorizationUtils.instanse.checkLoginForRegistration(AuthorizationUtils.instanse.readLogin(request), request)){
+            login = AuthorizationUtils.instanse.readLogin(request);
+        } else {
+            return null;
+        }
+        String password = null;
+        if(AuthorizationUtils.instanse.checkPassword(AuthorizationUtils.instanse.readPassword(request), request)){
+            password = AuthorizationUtils.instanse.readPassword(request);
+        } else {
+            return null;
+        }
+        String email = null;
+        if(AuthorizationUtils.instanse.checkEmailForRegistration(AuthorizationUtils.instanse.readEmail(request), request)){
+            email = AuthorizationUtils.instanse.readEmail(request);
+        } else {
+            return null;
+        }
         if( (login == null) || (password == null) || (email == null)){
             AuthorizationUtils.instanse.setErrorEmptyField(request);
             return null;
@@ -51,6 +70,4 @@ public class RegistrationFormProcessor {
         User user = new User(login, password, email, sex, age, comment );
         return user;
     }
-
-
 }

@@ -5,17 +5,17 @@
 </head>
 <link rel="stylesheet" type="text/css" href="../../resources/stylies/index.css" />
 <script src="../../resources/scripts/scripts.js"></script>
-<body>
-<div id="main">
+<body id="main">
+<div>
     <jsp:include page="header.jsp"/>
 
         <div style="width: 75%; margin-left: 25%">
             <form action="${pageContext.request.contextPath}/registration" method="POST">
                 <table border="0">
 
-                    <c:if test="${userError != null}">
+                    <c:if test="${usererror != null}">
                         <tr>
-                            <td><h4 style="color: #ffffff; text-align: center; margin-top: 25px;"> ${userError}</h4></td>
+                            <td><h4 style="color: #ffffff; text-align: center; margin-top: 25px;"> ${usererror}</h4></td>
                         </tr>
                     </c:if>
                     <tr>

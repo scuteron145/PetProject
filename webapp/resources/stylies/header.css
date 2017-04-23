@@ -72,3 +72,18 @@ a.login:hover {
     width: 165px;
     height: 58px;
 }
+
+a.logout {
+    background: url(../images/topMenu/logout.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 165px;
+    height: 58px;
+}
+a.logout:hover {
+    background: url(../images/topMenu/logoutClicked.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 165px;
+    height: 58px;
+}

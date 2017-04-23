@@ -1,5 +1,6 @@
 #main {
     background-image:url(../images/background.png);
-    background-repeat:repeat;
-    width: 100%;D:\PetProject\webapp
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
 }

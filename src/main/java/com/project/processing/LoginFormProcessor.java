@@ -9,10 +9,23 @@ import javax.servlet.http.HttpServletRequest;
 
 public class LoginFormProcessor {
     public static LoginFormProcessor instanse = new LoginFormProcessor();
-
     public boolean login(HttpServletRequest request) {
-        String login = AuthorizationUtils.instanse.readLogin(request);
-        String password = AuthorizationUtils.instanse.readPassword(request);
+        if( AuthorizationUtils.instanse.LoginPasswordAreEmpty(request) ){
+            AuthorizationUtils.instanse.setErrorEmptyField(request);
+            return false;
+        }
+        String login = null;
+        if(AuthorizationUtils.instanse.checkLoginForAuthorization(AuthorizationUtils.instanse.readLogin(request), request)){
+            login = AuthorizationUtils.instanse.readLogin(request);
+        } else {
+            return false;
+        }
+        String password = null;
+        if(AuthorizationUtils.instanse.checkPassword(AuthorizationUtils.instanse.readPassword(request), request)){
+            password = AuthorizationUtils.instanse.readPassword(request);
+        } else {
+            return false;
+        }
         if(login == null){
             AuthorizationUtils.instanse.setErrorWrongLogin(request);
             return false;
@@ -22,17 +35,24 @@ public class LoginFormProcessor {
             return false;
         }
         if(OnlineUsersMap.onlineUserMap.containsKey(login)){
-            AuthorizationUtils.instanse.setErrorWrongLoginItIsAlreadyRegistered(request);
+            AuthorizationUtils.instanse.setErrorWrongLoginUserIsOnline(request);
             return false;
         }
         UserDao userDao = new UserDao();
-
+        User user = null;
         if(!userDao.checkIfUserExists(login)){
-            AuthorizationUtils.instanse.setErrorWrongLoginItIsAlreadyRegistered(request);
+            AuthorizationUtils.instanse.setErrorNotRegisteredUser(request);
+            return false;
+        } else {
+            user = userDao.getUserByLogin(login);
+        }
+        if(password.equals(user.getPassword())){
+            OnlineUsersMap.onlineUserMap.put(login, user);
+            return true;
+        } else {
+            AuthorizationUtils.instanse.setErrorAnotherPassword(request);
             return false;
         }
-        //OnlineUsersMap.onlineUserMap.put(user.getLogin(),user);
-        return true;
     }
 
     public boolean validate(User user, String password) {

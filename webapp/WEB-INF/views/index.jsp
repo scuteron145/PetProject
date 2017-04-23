@@ -4,8 +4,8 @@
     <title>Home</title>
   </head>
   <link rel="stylesheet" type="text/css" href="../../resources/stylies/index.css" />
-  <body>
-  <div id="main">
+  <body id="main">
+  <div>
     <jsp:include page="header.jsp"/>
   </div>
  <%-- <jsp:include page="footer.jsp"/>--%>
