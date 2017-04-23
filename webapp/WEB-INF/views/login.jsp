@@ -18,10 +18,10 @@
     </div>
     <div  id="error"><img src="../../resources/images/loginPage/error.png" width="212" height="14"></div>
     <div id="signIn">
-        <a href="#" class="signMeIn"></a>
+        <a href="/login" class="signMeIn"></a>
         <a href="/registration" class="newAccount"></a>
     </div>
 </div>
-<jsp:include page="footer.jsp"/>
+<%--<jsp:include page="footer.jsp"/>--%>
 </body>
 </html>

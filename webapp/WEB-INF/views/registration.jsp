@@ -13,9 +13,9 @@
             <form action="${pageContext.request.contextPath}/registration" method="POST">
                 <table border="0">
 
-                    <c:if test="${wrongLoginOrPassword != null}">
+                    <c:if test="${userError != null}">
                         <tr>
-                            <td><h4 style="color: #ffffff; text-align: center; margin-top: 25px;"> ${wrongLoginOrPassword}</h4></td>
+                            <td><h4 style="color: #ffffff; text-align: center; margin-top: 25px;"> ${userError}</h4></td>
                         </tr>
                     </c:if>
                     <tr>
@@ -79,6 +79,6 @@
 
 
 </div>
-        <jsp:include page="footer.jsp"/>
+        <%--<jsp:include page="footer.jsp"/>--%>
 </body>
 </html>

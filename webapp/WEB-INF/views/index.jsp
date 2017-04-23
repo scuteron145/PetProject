@@ -8,6 +8,6 @@
   <div id="main">
     <jsp:include page="header.jsp"/>
   </div>
-  <jsp:include page="footer.jsp"/>
+ <%-- <jsp:include page="footer.jsp"/>--%>
   </body>
 </html>
