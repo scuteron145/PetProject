@@ -1,6 +1,44 @@
 #main {
     background-image:url(../images/background.png);
     background-repeat: no-repeat;
+    background-color: #BEBBBA;
     width: 100%;
     height: 100%;
 }
+
+#allUsersChat {
+    width: 80%;
+    height: 580px;
+    margin-left: 10%;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    overflow: auto;
+}
+
+#inputButton {
+    height: 20px;
+    width: 56px;
+    margin-left: 10%;
+    margin-top: 40px;
+    float: left;
+}
+
+#inputMessage {
+    background-image:url(../images/indexPage/inputBorder.png);
+    background-repeat: no-repeat;
+    width: 1020px;
+    height: 20px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+}
+
+
+#inputtext {
+    background-color: transparent;
+    border: 0;
+    font: 16px Calibri;
+    color: white;
+}
+

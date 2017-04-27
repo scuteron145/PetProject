@@ -37,12 +37,8 @@
                 </td>
             </c:if>
 
-
-
-
-
         </tr>
     </table>
-    <div align="center" style="margin-top: 0"><img src="../../resources/images/topMenu/line.png" width="1020" height="1"></div>
+    <div align="center" style="margin-top: 0; "><img src="../../resources/images/topMenu/line.png" width="1020" height="1"></div>
 </body>
 </html>
