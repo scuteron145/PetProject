@@ -15,13 +15,13 @@
                 <a href="/index" class="button1"></a>
             </td>
             <td width="144px">
-                <a href="#" class="button2"></a>
+                <a href="/profile" class="button2"></a>
             </td>
             <td width="144px">
-                <a href="#" class="button3"></a>
+                <a href="/mail" class="button3"></a>
             </td>
             <td width="144px">
-                <a href="#" class="button4"></a>
+                <a href="/find" class="button4"></a>
             </td>
 
 

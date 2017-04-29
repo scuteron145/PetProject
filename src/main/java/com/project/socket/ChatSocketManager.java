@@ -16,20 +16,18 @@ public class ChatSocketManager {
     public void open(Session session) {
         String login = String.valueOf(session.getRequestParameterMap().get("login").get(0));
         OnlineUsersMap.onlineUserMap.get(login).setSession(session);
-        MessagesDeque.messagesDeque.addFirst(new Message(String.valueOf(session.getRequestParameterMap().get("login").get(0)), " joined us."));
         refreshMessages();
     }
 
     @OnClose
     public void close(Session session) {
-        //MessagesDeque.messagesDeque.addFirst(new Message(session.getRequestParameterMap().get("login").get(0), "left us."));
-        OnlineUsersMap.onlineUserMap.remove(session.getRequestParameterMap().get("login").get(0));
-        //refreshOnlineUsers();
-        refreshMessages();
+
     }
 
     @OnError
-    public void onError(Throwable error){}
+    public void onError(Throwable error){
+
+    }
 
     @OnMessage
     public void handleMessage(String message, Session session) {

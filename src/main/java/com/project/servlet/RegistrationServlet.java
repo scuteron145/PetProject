@@ -1,6 +1,7 @@
 package com.project.servlet;
 
 import com.project.processing.RegistrationFormProcessor;
+import com.project.utils.AuthorizationUtils;
 import com.project.utils.ServletUtils;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +25,7 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        AuthorizationUtils.instanse.clearError(request);
         RegistrationFormProcessor registretionFormProcessor = new RegistrationFormProcessor();
         if(registretionFormProcessor.registerUser(request, getServletContext())){
             ServletUtils.instanse.redirect(request, response, getServletContext(), "/WEB-INF/views/login.jsp");

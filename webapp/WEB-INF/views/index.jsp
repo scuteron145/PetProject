@@ -5,6 +5,7 @@
     <title>Home</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="$../../resources/scripts/scripts.js"></script>
+<c:if test="${loggedin != null}">
     <script>
       var socket = new WebSocket('ws://' + window.location.host + '/chat?login=${login}');
 
@@ -26,6 +27,7 @@
       };
 
     </script>
+</c:if>
   </head>
   <link rel="stylesheet" type="text/css" href="../../resources/stylies/index.css" />
   <body id="main">
@@ -33,11 +35,8 @@
     <jsp:include page="header.jsp"/>
   </div>
 
-
-
-
   <c:if test="${loggedin == null}">
-    <h4 align="center" style="color: #ffffff;">You can not participate in discussions without logging in. Please login.</h4>
+    <h4 align="center" style="color: #ffffff;">You can not participate in the discussions without logging in. Please login.</h4>
     <p style="text-align: center"><img src="$../../resources/images/indexPage/notLoggedIn.png" width="256" height="256" alt="Need login."></p>
   </c:if>
 
@@ -51,9 +50,9 @@
     <div id="inputMessage">
       <input type="text" name="login" value="" size="100" id="inputtext"/>
     </div>
+
+    <div id="allUsersChat"> </div>
   </c:if>
 
-  <div id="allUsersChat"> </div>
- <%-- <jsp:include page="footer.jsp"/>--%>
   </body>
 </html>

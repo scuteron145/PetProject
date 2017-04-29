@@ -114,6 +114,12 @@ public class AuthorizationUtils {
         return request.getParameter("email");
     }
 
+    public void clearError(HttpServletRequest request){
+        if (request.getSession().getAttribute("usererror") != null){
+            request.getSession().removeAttribute("usererror");
+        }
+    }
+
     public void setErrorEmptyField(HttpServletRequest request){
         String message = "Fill in all necessary text fields to register.";
         request.getSession().setAttribute("usererror",message);
