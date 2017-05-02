@@ -1,5 +1,6 @@
 package com.project.servlet;
 
+        import com.project.processing.FindFormProcessor;
         import com.project.utils.ServletUtils;
         import javax.servlet.ServletException;
         import javax.servlet.annotation.WebServlet;
@@ -22,6 +23,11 @@ public class FindServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServletUtils.instanse.redirect(request, response, getServletContext(), "/WEB-INF/views/find.jsp");
+        if(request.getParameter("find") != null){
+            FindFormProcessor.instanse.findUsers(request);
+            ServletUtils.instanse.redirect(request, response, getServletContext(), "/WEB-INF/views/find.jsp");
+        } else {
+            ServletUtils.instanse.redirect(request, response, getServletContext(), "/WEB-INF/views/find.jsp");
+        }
     }
 }

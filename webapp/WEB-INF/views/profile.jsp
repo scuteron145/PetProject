@@ -45,10 +45,7 @@
             </c:if>
         </tr>
     </table>
-
-
 </c:if>
-
 
 <c:if test="${edit == true}">
     <form action="${pageContext.request.contextPath}/profile?edit=changes" method="POST">
@@ -94,8 +91,5 @@
         </table>
     </form>
 </c:if>
-
-
-
 </body>
 </html>

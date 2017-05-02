@@ -1,8 +1,7 @@
 package com.project.chat;
 
 import com.project.beans.Message;
-import com.project.beans.XmlSocketBox;
-import com.project.utils.ChatUtils;
+import com.project.utils.XmlUtils;
 
 import java.util.concurrent.ConcurrentLinkedDeque;
 
@@ -11,7 +10,7 @@ public class MessagesDeque {
 
     public static String dequeToXmlString(){
         checkSize();
-        return XmlSocketBox.instanse.generateStringFromXml(ChatUtils.instanse.dequeToDocument(messagesDeque));
+        return XmlUtils.instanse.generateStringFromXml(XmlUtils.instanse.dequeToDocument(messagesDeque));
     }
 
     private static void checkSize(){

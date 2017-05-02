@@ -6,11 +6,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDao {
     private static final String INSERT_USER = "INSERT INTO registered_users(login, password, email, sex, age, comment)VALUES(?, ?, ?, ?, ?, ?) ;";
     private static final String SELECT_USER_BY_LOGIN = "SELECT login, password, email, sex, age, comment FROM registered_users WHERE login IN(?) ;";
-    private static final String SELECT_USER_BY_EMAIL = "SELECT login, password, email, sex, age, comment FROM registered_users WHERE email IN(?) ;";
+
+    private static final String SELECT_USERS_BY_A_PIECE_OF_LOGIN = "SELECT * FROM registered_users WHERE login LIKE '%' || ? || '%' ;";
+
+    private static final String SELECT_USER_BY_EMAIL = "SELECT * FROM registered_users WHERE email IN(?) ;";
     private static final String UPDATE_USERS_PASSWORD = "UPDATE registered_users SET password = ? WHERE login IN(?) ;";
     private static final String UPDATE_USERS_EMAIL = "UPDATE registered_users SET email = ? WHERE login IN(?) ;";
     private static final String UPDATE_USERS_SEX = "UPDATE registered_users SET sex = ? WHERE login IN(?) ;";
@@ -57,8 +62,38 @@ public class UserDao {
             preparedStatement = connection.prepareStatement(SELECT_USER_BY_LOGIN);
             preparedStatement.setString(1,login);
             resultSet = preparedStatement.executeQuery();
-            result = new User(resultSet.getString("login"),resultSet.getString("password"),resultSet.getString("email") ,
-                    resultSet.getString("sex"), resultSet.getInt("age"), resultSet.getString("comment")  );
+            if(resultSet.next()){
+                result = new User(resultSet.getString("login"),resultSet.getString("password"),resultSet.getString("email") ,
+                        resultSet.getString("sex"), resultSet.getInt("age"), resultSet.getString("comment")  );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                preparedStatement.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
+
+    public List<User> getUsersByAPieceOfLogin(String piece){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ConnectionManager connectionManager = new ConnectionManager();
+        ResultSet resultSet = null;
+        List<User> result = new ArrayList<User>();
+        try {
+            connection = connectionManager.getConnection();
+            preparedStatement = connection.prepareStatement(SELECT_USERS_BY_A_PIECE_OF_LOGIN);
+            preparedStatement.setString(1,piece);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                result.add(new User(resultSet.getString("login"),resultSet.getString("password"),resultSet.getString("email") ,
+                        resultSet.getString("sex"), resultSet.getInt("age"), resultSet.getString("comment")  ));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

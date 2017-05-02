@@ -2,7 +2,7 @@ package com.project.socket;
 
 import com.project.beans.Message;
 import com.project.beans.User;
-import com.project.beans.XmlSocketBox;
+import com.project.utils.XmlUtils;
 import com.project.chat.MessagesDeque;
 import com.project.chat.OnlineUsersMap;
 import org.w3c.dom.Document;
@@ -31,7 +31,7 @@ public class ChatSocketManager {
 
     @OnMessage
     public void handleMessage(String message, Session session) {
-        Document doc = XmlSocketBox.instanse.parseXmlFromString(message);
+        Document doc = XmlUtils.instanse.parseXmlFromString(message);
         if (!doc.getElementsByTagName("message").item(0).getAttributes().getNamedItem("textofthemessage").getNodeValue().equals("")) {
             messagesHandler(session, doc);
         }
@@ -42,7 +42,6 @@ public class ChatSocketManager {
         MessagesDeque.messagesDeque.addFirst(new Message(String.valueOf(session.getRequestParameterMap().get("login").get(0)), textOfTheMessage));
         refreshMessages();
     }
-
 
     private void refreshMessages() {
         for (String i : OnlineUsersMap.onlineUserMap.keySet()) {

@@ -1,6 +1,6 @@
 /*
  <socketbox>
- <message login="test" time="15:36:37" textofthemessage="sometext">    </message>
+    <message login="test" time="15:36:37" textofthemessage="sometext"></message>
  </socketbox>
  */
 
@@ -21,8 +21,6 @@ function readUsersInput(login) {
     return result;
 }
 
-
-
 function messagesDequeHandler(doc) {
     var i;
     var strResult = "";
@@ -36,15 +34,22 @@ function messagesDequeHandler(doc) {
     document.getElementById('allUsersChat').innerHTML = strResult;
 }
 
-
-
-function generateLogoutMessage(login) {
-    var socketBox = createSocketBox();
-    socketBox = setMessage(socketBox, login, "leaved us.");
-    socketBox.getElementsByTagName("message").item(0).attributes.getNamedItem("logout").textContent = "true"
-    var result = generateStringFromXml(socketBox);
-    return result;
-}
+function usersHandler(doc) {
+    var i, test;
+    var strResult = "";
+    for (i = 0; i < doc.getElementsByTagName("user").length; i++) {
+        strResult = strResult + '<b style="color: #ffffff;">' + doc.getElementsByTagName("user").item(i).attributes.getNamedItem("login").nodeValue +
+            '</b><details><summary><b style="color: #ffffff;">Profile</b></summary><table border="0"><tr><td><b style="color: #ffffff;">Email: </b></td>            <td><b style="color: #ffffff;">' + doc.getElementsByTagName("user").item(i).attributes.getNamedItem("email").nodeValue +
+        '</b></td></tr><tr><td><b style="color: #ffffff;">Sex: </b></td><td><b style="color: #ffffff;">' +
+        doc.getElementsByTagName("user").item(i).attributes.getNamedItem("sex").nodeValue +
+        '</b></td></tr><tr><td><b style="color: #ffffff;">Age: </b></td><td><b style="color: #ffffff;">' +
+        doc.getElementsByTagName("user").item(i).attributes.getNamedItem("age").nodeValue +
+        '</b></td></tr><tr><td><b style="color: #ffffff;">Comment: </b></td><td><b style="color: #ffffff;">' +
+        htmlStringSplitter(doc.getElementsByTagName("user").item(i).attributes.getNamedItem("comment").nodeValue) +
+        '</b></td></tr></table></details></br>';
+    }
+    document.getElementById('foundusers').innerHTML = strResult;
+    }
 
 function createSocketBox() {
     var doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
